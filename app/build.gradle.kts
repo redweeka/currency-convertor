@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.currencyconvertor"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.currencyconvertor"
@@ -37,6 +37,11 @@ android {
     buildFeatures {
         compose = true
     }
+    packaging {
+        resources {
+            excludes += "/META-INF/DEPENDENCIES"
+        }
+    }
 }
 
 dependencies {
@@ -56,4 +61,14 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // For icons
+    implementation("androidx.compose.material:material-icons-extended")
+
+    // Networking
+    implementation(libs.okhttp)
+    implementation(libs.google.api.client.gson)
+
+    // View model use with compose
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 }
